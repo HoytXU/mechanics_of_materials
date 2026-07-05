@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An academically structured research map of mechanics of materials, with primary papers, methods, and reading paths.">
+  <title>Mechanics of Materials Research Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="overline">Research map · solid mechanics · materials science</p>
+    <h1>Mechanics of Materials</h1>
+    <p class="abstract">A compact guide to how solids deform, remember, damage, and fail—and how experiments, computation, and uncertainty turn those mechanisms into engineering decisions.</p>
+    <p class="small">Open a topic for its governing question and canonical entry points. Its right-hand preview switches to a distinct representative paper; “representative” means a rigorous entry point, not necessarily the first or only paper in that area. Reference numbers lead to the selected bibliography.</p>
+  </header>
+
+  <nav aria-label="Research map sections">
+    <a href="#foundations">Foundations</a> ·
+    <a href="#structures">Structures</a> ·
+    <a href="#elasticity">Elasticity</a> ·
+    <a href="#inelasticity">Inelasticity</a> ·
+    <a href="#failure">Failure</a> ·
+    <a href="#scales">Scales</a> ·
+    <a href="#computation">Computation</a> ·
+    <a href="#uncertainty">Experiment &amp; UQ</a> ·
+    <a href="#design">Design</a> ·
+    <a href="#milestones">Milestones</a> ·
+    <a href="#resources">Resources</a> ·
+    <a href="#references">References</a>
+  </nav>
+
+  <aside class="field-spine" aria-label="Field logic">
+    <span>process</span><b>→</b><span>microstructure</span><b>→</b><span>constitutive law</span><b>→</b><span>structural response</span><b>→</b><span>failure probability</span><b>→</b><span>decision</span>
+  </aside>
+
+  <aside class="taxonomy-note" aria-label="Taxonomy method">
+    <b>How this taxonomy is organized.</b> Sections 1–5 classify physical theories and phenomena; section 6 classifies scale and material architecture; sections 7–8 classify research methods; section 9 covers engineering translation. These axes overlap in real research—a phase-field fatigue model, for example, belongs simultaneously to failure, computation, and uncertainty. Coverage was cross-checked against the <a href="https://www.asme.org/get-involved/groups-sections-and-technical-divisions/technical-divisions/technical-divisions-community-pages/applied-mechanics-division">ASME Applied Mechanics Division</a> scope and <a href="https://sem.org/technicaldivisions">SEM technical divisions</a>.
+  </aside>
+
+  <section id="foundations">
+    <h2>1. Continuum foundations</h2>
+    <p>The common language: kinematics, balance laws, stress, energy, and admissible constitutive response.</p>
+    <figure>
+      <a href="https://doi.org/10.1098/rsta.1921.0006"><img src="assets/milestones/griffith.jpg" alt="First page of Griffith's 1921 paper on rupture and flow in solids"></a>
+      <figcaption>Griffith, <i>The Phenomena of Rupture and Flow in Solids</i> (1921): an early demonstration that energy and defects—not nominal stress alone—govern failure. <a href="#r12">[12]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Kinematics: how does a body deform?</summary><p>Displacement, deformation gradient, strain measures, compatibility, and objectivity distinguish geometry from material response. Small-strain theory linearizes this description; finite-strain theory retains rotations and large changes of shape. Start with <a href="#r1">[1]</a> and <a href="#r2">[2]</a>.</p></details>
+      <details><summary>Balance laws: what must every model conserve?</summary><p>Mass, linear momentum, angular momentum, and energy constrain any continuum model before a material law is chosen. The local forms become the governing PDEs after localization. See <a href="#r1">[1]</a>.</p></details>
+      <details><summary>Stress and traction</summary><p>Cauchy's stress tensor maps an oriented plane to its traction. Principal stresses, invariants, hydrostatic pressure, and deviatoric stress organize multiaxial states and later define yield or failure criteria. See <a href="#r1">[1]</a> and <a href="#r3">[3]</a>.</p></details>
+      <details><summary>Thermodynamics and constitutive restrictions</summary><p>The Clausius–Duhem inequality separates stored energy from dissipation. Hyperelasticity, plasticity, viscosity, damage, and heat conduction must be formulated so that dissipation is nonnegative. See <a href="#r1">[1]</a> and <a href="#r2">[2]</a>.</p></details>
+      <details><summary>Boundary-value problems and scale</summary><p>A mechanics claim is incomplete without geometry, loads, constraints, initial data, and an identified scale. Saint-Venant effects, localization, and representative volume elements determine when a continuum idealization is defensible. See <a href="#r1">[1]</a> and <a href="#r5">[5]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="structures">
+    <h2>2. Structural mechanics, stability, and dynamics</h2>
+    <p>Reduced-dimensional theories and system-level phenomena that connect continuum laws to load-bearing components.</p>
+    <figure><a href="#"><img src="assets/topics/beams.jpg" alt="Representative paper preview"></a><figcaption></figcaption></figure>
+    <div class="topics">
+      <details open><summary>Rods, beams, plates, and shells</summary><p>Dimensional reduction turns three-dimensional continua into tractable structural theories. Euler–Bernoulli and Timoshenko beams, Kirchhoff–Love and Reissner–Mindlin plates, and shell theories differ in retained shear, rotary inertia, and curvature assumptions. See <a href="#r32">[32]</a> and <a href="#r35">[35]</a>.</p></details>
+      <details><summary>Stability, buckling, and post-buckling</summary><p>Loss of stability may occur before material failure. Eigenvalue buckling predicts bifurcation loads only for idealized systems; imperfections, geometric nonlinearity, mode interaction, and path following govern real post-buckling response. See <a href="#r33">[33]</a>.</p></details>
+      <details><summary>Structural dynamics and vibration</summary><p>Mass, stiffness, damping, and forcing determine modes, resonance, transient response, and stability. Linear modal analysis is foundational, while joints, contact, damage, and large motion introduce nonlinearity.</p></details>
+      <details><summary>Elastic waves and impact</summary><p>Wave speed, dispersion, reflection, attenuation, and mode conversion connect constitutive response to ultrasonics, seismology, impact, and nondestructive evaluation. See <a href="#r34">[34]</a>.</p></details>
+      <details><summary>Contact, interfaces, and tribology</summary><p>Unilateral contact, adhesion, friction, and wear impose nonsmooth interface laws. Local surface geometry and roughness connect microscale junctions to system-level force transmission and dissipation.</p></details>
+    </div>
+  </section>
+
+  <section id="elasticity">
+    <h2>3. Elasticity and coupled-field response</h2>
+    <p>Reversible constitutive behavior, material symmetry, and interactions between mechanical and other physical fields.</p>
+    <figure><a href="#"><img src="assets/topics/hyperelastic.jpg" alt="Representative paper preview"></a><figcaption></figcaption></figure>
+    <div class="topics">
+      <details open><summary>Linear and nonlinear elasticity</summary><p>Linear elasticity relates infinitesimal strain and stress through a stiffness tensor. Hyperelasticity derives stress from a strain-energy density and is the natural setting for rubbers, soft tissues, and large elastic rotations. See <a href="#r2">[2]</a>.</p></details>
+      <details><summary>Anisotropy and material symmetry</summary><p>Crystal class, texture, fibers, and layering restrict the symmetries of the constitutive tensor. Isotropy needs two elastic constants; general anisotropy requires substantially richer characterization. See <a href="#r2">[2]</a>.</p></details>
+      <details><summary>Thermoelasticity and thermomechanics</summary><p>Temperature changes free energy, thermal strain, stiffness, and phase stability. Coupled energy balance is required when deformation generates heat or thermal fields evolve on comparable time scales.</p></details>
+      <details><summary>Poroelasticity and mixture response</summary><p>Fluid pressure and solid deformation interact in soils, rocks, gels, bone, and porous media. Biot's consolidation theory is the classical linear reference point. See <a href="#r36">[36]</a>.</p></details>
+      <details><summary>Soft, active, and multifunctional materials</summary><p>Elastomers, gels, tissues, dielectric elastomers, shape-memory materials, and growth processes couple large deformation to transport, fields, chemistry, or internal actuation.</p></details>
+    </div>
+  </section>
+
+  <section id="inelasticity">
+    <h2>4. Plasticity and time-dependent behavior</h2>
+    <p>Models for irreversible response and material memory.</p>
+    <figure>
+      <a href="https://doi.org/10.1016/0045-7825(85)90070-2"><img src="assets/milestones/simo-taylor.jpg" alt="First page of Simo and Taylor's paper on consistent tangent operators"></a>
+      <figcaption>Simo and Taylor, <i>Consistent Tangent Operators for Rate-Independent Elastoplasticity</i> (1985): constitutive integration and the global Newton solve treated as one algorithm. <a href="#r8">[8]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Rate-independent plasticity</summary><p>A yield surface, flow rule, and hardening law determine when permanent deformation begins, its direction, and how resistance evolves. Associative models have a variational structure; non-associative models are important in geomaterials. See <a href="#r3">[3]</a> and <a href="#r20">[20]</a>.</p></details>
+      <details><summary>Constitutive integration</summary><p>Return mapping updates internal variables over a finite load increment. A consistent algorithmic tangent preserves the quadratic convergence expected from Newton's method. See <a href="#r8">[8]</a> and <a href="#r20">[20]</a>.</p></details>
+      <details><summary>Porous plasticity and ductile rupture</summary><p>Void nucleation, growth, and coalescence couple hydrostatic stress to yielding and loss of load capacity. Gurson's model is the canonical porous-plasticity starting point. See <a href="#r9">[9]</a>.</p></details>
+      <details><summary>Viscoelasticity and creep</summary><p>Relaxation, retardation, and creep introduce explicit time scales. Linear hereditary models, power-law creep, and thermally activated mechanisms occupy different regimes. See Norton's early power law <a href="#r11">[11]</a> and finite-strain treatments in <a href="#r2">[2]</a>.</p></details>
+      <details><summary>History variables and constitutive memory</summary><p>Internal variables encode hardening, texture, viscous branches, aging, and other path dependence. Their evolution must satisfy thermodynamics and be identifiable from the available loading histories. See <a href="#r1">[1]</a> and <a href="#r20">[20]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="failure">
+    <h2>5. Damage, fracture, and fatigue</h2>
+    <p>When local fields create new surfaces, grow defects, or exhaust a component under repeated loading.</p>
+    <figure>
+      <a href="https://doi.org/10.1115/1.3601206"><img src="assets/milestones/rice.jpg" alt="First page of Rice's 1968 J-integral paper"></a>
+      <figcaption>Rice, <i>A Path Independent Integral and the Approximate Analysis of Strain Concentration by Notches and Cracks</i> (1968). <a href="#r15">[15]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Energy balance and brittle fracture</summary><p>Griffith compared released elastic energy with the cost of creating crack surface. This supplies a size effect and explains why flaws lower strength. See <a href="#r12">[12]</a>.</p></details>
+      <details><summary>Linear-elastic fracture mechanics</summary><p>Stress-intensity factors characterize singular crack-tip fields, while toughness supplies a material resistance under small-scale yielding. Geometry and mode mixity enter through the intensity factors. See <a href="#r13">[13]</a>.</p></details>
+      <details><summary>Elastic–plastic fracture</summary><p>The J-integral extends an energy-release measure to nonlinear elastic and deformation-plastic settings. Constraint, crack-tip opening, and resistance curves are needed when plastic zones are not negligible. See <a href="#r15">[15]</a>.</p></details>
+      <details><summary>Fatigue and subcritical crack growth</summary><p>S–N and strain–life methods correlate total life; fracture-mechanics methods evolve an existing crack. The Paris law captures an intermediate growth regime, not threshold or final instability. See <a href="#r14">[14]</a>.</p></details>
+      <details><summary>Continuum damage and localization</summary><p>Damage variables represent distributed stiffness or strength loss before a discrete crack forms. Strain softening loses classical well-posedness, so nonlocal, gradient, or fracture-energy regularization is needed for mesh-objective predictions. See <a href="#r10">[10]</a>.</p></details>
+      <details><summary>Cohesive, enriched, and phase-field fracture</summary><p>Cohesive zones prescribe traction–separation; XFEM enriches a mesh with discontinuities; variational phase fields regularize a crack into a finite-width damage zone. Each introduces length scales and calibration choices. See <a href="#r16">[16]</a> and <a href="#r17">[17]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="scales">
+    <h2>6. Micromechanics, defects, and multiscale materials</h2>
+    <p>How mechanisms and architecture below the component scale produce effective response and failure.</p>
+    <figure><a href="#"><img src="assets/topics/dislocations.jpg" alt="Representative paper preview"></a><figcaption></figcaption></figure>
+    <div class="topics">
+      <details open><summary>Dislocations and crystal plasticity</summary><p>Taylor's dislocation picture connected crystallographic slip to macroscopic plastic strain. Modern crystal plasticity tracks slip systems, hardening, and lattice rotation to predict texture and anisotropy. See <a href="#r4">[4]</a>.</p></details>
+      <details><summary>Inclusions and homogenization</summary><p>Eshelby's inclusion solution links eigenstrain and phase geometry to local and effective fields. Bounds, mean-field schemes, representative volume elements, and computational homogenization extend that bridge. See <a href="#r5">[5]</a>.</p></details>
+      <details><summary>Grains, interfaces, and size effects</summary><p>The Hall–Petch relation made grain size an explicit strength variable, while small-scale experiments reveal transitions to source-limited plasticity and interface-controlled mechanisms. See <a href="#r6">[6]</a> and <a href="#r7">[7]</a>.</p></details>
+      <details><summary>Composites and heterogeneous media</summary><p>Fibers, particles, laminates, pores, and interfaces create direction-dependent stiffness, damage, and transport. Effective response depends on constituent behavior, morphology, contrast, and statistical representativeness.</p></details>
+      <details><summary>Architected and metamaterials</summary><p>Cell topology and instability can dominate base-material behavior, enabling unusual stiffness, Poisson response, wave control, and programmability. Manufacturing defects make uncertainty part of the mechanics.</p></details>
+    </div>
+  </section>
+
+  <section id="computation">
+    <h2>7. Computational mechanics</h2>
+    <p>Discretization is part of the model: it controls approximation, stability, conservation, and observable failure modes.</p>
+    <figure>
+      <a href="https://arxiv.org/abs/1510.04232"><img src="assets/milestones/data-driven.jpg" alt="First page of Data-driven computational mechanics"></a>
+      <figcaption>Kirchdoerfer and Ortiz, <i>Data-driven Computational Mechanics</i> (2016): a formulation that works directly with material data and physical constraints. <a href="#r21">[21]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Finite-element weak form</summary><p>Virtual work lowers derivative requirements and produces the residual and tangent equations. Element interpolation, quadrature, constraints, and boundary conditions determine consistency and convergence. See <a href="#r18">[18]</a> and <a href="#r19">[19]</a>.</p></details>
+      <details><summary>Nonlinearity and solution algorithms</summary><p>Geometric and material nonlinearities require incremental loading, Newton iterations, line searches, and sometimes arc-length control. Consistency between local material updates and the global tangent is essential. See <a href="#r8">[8]</a> and <a href="#r20">[20]</a>.</p></details>
+      <details><summary>Locking, stability, and discretization error</summary><p>Near-incompressibility, bending-dominated response, distorted elements, and softening can make a superficially converged answer wrong. Mixed methods, stabilization, adaptivity, and mesh-objective regularization address distinct pathologies. See <a href="#r19">[19]</a>.</p></details>
+      <details><summary>Multiscale and reduced models</summary><p>FE² and computational homogenization solve microscale boundary-value problems at macroscale quadrature points. Reduced bases and surrogates lower cost but must preserve admissibility and quantify extrapolation. See <a href="#r5">[5]</a> and <a href="#r31">[31]</a>.</p></details>
+      <details><summary>Data-driven and hybrid solvers</summary><p>Data-driven mechanics searches a material-data set subject to compatibility and equilibrium. Physics-informed learning instead embeds residuals or operators in training; both require careful treatment of noise, coverage, and identifiability. See <a href="#r21">[21]</a> and <a href="#r25">[25]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="uncertainty">
+    <h2>8. Experimental mechanics, identification, and uncertainty</h2>
+    <p>A model earns credibility by confronting measurements and declaring what is uncertain.</p>
+    <figure>
+      <a href="https://arxiv.org/abs/1711.10561"><img src="assets/milestones/pinn.jpg" alt="First page of the physics-informed neural networks paper"></a>
+      <figcaption>Raissi, Perdikaris, and Karniadakis, <i>Physics-informed Neural Networks</i> (2019): differential-equation structure used for forward and inverse problems. <a href="#r25">[25]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Experimental mechanics</summary><p>Load cells and extensometers give global response; DIC, microscopy, diffraction, and tomography expose heterogeneous fields and evolving structure. Measurement resolution must match the length and time scales in the model.</p></details>
+      <details><summary>Parameter identification and inverse problems</summary><p>Identifiability asks whether the observations distinguish parameters at all. Regularization, experiment design, and posterior correlation matter more than a small optimizer residual. See <a href="#r23">[23]</a>.</p></details>
+      <details><summary>Verification and validation</summary><p>Verification asks whether equations were solved correctly; validation asks whether the chosen equations represent reality for the intended use. Code checks, solution verification, validation metrics, and applicability domains are separate claims. See <a href="#r22">[22]</a>.</p></details>
+      <details><summary>Uncertainty propagation</summary><p>Monte Carlo, polynomial chaos, stochastic collocation, and perturbation methods propagate distributions through a model. Efficiency depends on dimension, regularity, event rarity, and solver cost. See <a href="#r24">[24]</a>.</p></details>
+      <details><summary>Bayesian calibration and model discrepancy</summary><p>Bayesian inference represents parameter uncertainty conditional on data and prior assumptions. A discrepancy term can prevent model error from being falsely absorbed into material parameters. See <a href="#r23">[23]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="design">
+    <h2>9. Processing, materials design, and structural integrity</h2>
+    <p>The field closes the loop from how a material is made to how safely a component performs.</p>
+    <figure>
+      <a href="https://arxiv.org/abs/2311.07046"><img src="assets/milestones/am-fatigue.jpg" alt="First page of a review on fatigue properties of additively manufactured metals"></a>
+      <figcaption>Yi et al., <i>A Holistic Review on Fatigue Properties of Additively Manufactured Metals</i> (2023): defects, surface state, process, and fatigue assembled into one reliability problem. <a href="#r28">[28]</a></figcaption>
+    </figure>
+    <div class="topics">
+      <details open><summary>Process–structure–property–performance</summary><p>ICME treats manufacturing history, microstructure, constitutive response, component behavior, and design as a connected information flow rather than independent analyses. See <a href="#r26">[26]</a>.</p></details>
+      <details><summary>Additive manufacturing</summary><p>Thermal cycling, melt-pool dynamics, texture, porosity, residual stress, surface roughness, and post-processing jointly control performance. Fatigue exposes this coupled history especially strongly. See <a href="#r27">[27]</a> and <a href="#r28">[28]</a>.</p></details>
+      <details><summary>Structural integrity and life management</summary><p>Inspection, damage tolerance, remaining-life prediction, proof testing, and reliability connect mechanics models to decisions about operation, repair, retirement, and safety margins.</p></details>
+      <details><summary>Material selection and robust design</summary><p>Performance indices screen material families; reliability and robust optimization then account for scatter, constraints, and manufacturing variation. See <a href="#r29">[29]</a>.</p></details>
+      <details><summary>Topology and material optimization</summary><p>Topology optimization distributes material to satisfy objectives and constraints. Manufacturability, buckling, fatigue, uncertainty, and multi-material interfaces move the problem beyond minimum compliance. See <a href="#r30">[30]</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="milestones" class="milestones">
+    <h2>Milestone trail: a course-spine selection</h2>
+    <p>This is a selective—not exhaustive—sequence of papers that changed the language or computational practice of solid mechanics. The selection follows the progression emphasized by Stanford ME 340, MATSCI 208, CME 232, and CEE 310: fracture energy, structural discretization, crack-tip fields, constitutive modeling, micromechanics, variational fracture, and data-constrained mechanics. Every preview is from the paper named beside it.</p>
+    <div class="paper-grid">
+      <article><a href="https://doi.org/10.1098/rsta.1921.0006"><img src="assets/milestones/griffith.jpg" alt="Griffith 1921 paper first page"></a><div><time>1921</time><h3>Fracture as energy balance</h3><p>Griffith makes flaw size and surface energy central to brittle failure. <a href="#r12">[12]</a></p></div></article>
+      <article><a href="https://ntrs.nasa.gov/citations/19660023435"><img src="assets/topics/fem.jpg" alt="Martin 1966 direct stiffness report first page"></a><div><time>1966</time><h3>The direct-stiffness computational framework</h3><p>Martin develops large-deflection and stability analysis in the assembled stiffness framework that underlies structural finite-element practice.</p></div></article>
+      <article><a href="https://doi.org/10.1115/1.3601206"><img src="assets/milestones/rice.jpg" alt="Rice 1968 paper first page"></a><div><time>1968</time><h3>A path-independent crack measure</h3><p>Rice introduces the J-integral for nonlinear crack-tip fields. <a href="#r15">[15]</a></p></div></article>
+      <article><a href="https://www.osti.gov/biblio/7351470"><img src="assets/topics/gurson.jpg" alt="Gurson ductile rupture report title page"></a><div><time>1975/77</time><h3>Void growth becomes a constitutive model</h3><p>Gurson connects hydrostatic stress, porosity, yielding, and ductile rupture. <a href="#r9">[9]</a></p></div></article>
+      <article><a href="https://doi.org/10.1016/0045-7825(85)90070-2"><img src="assets/milestones/simo-taylor.jpg" alt="Simo and Taylor 1985 paper first page"></a><div><time>1985</time><h3>Algorithmic constitutive mechanics</h3><p>Consistent tangents connect return mapping to robust nonlinear FE solves. <a href="#r8">[8]</a></p></div></article>
+      <article><a href="https://doi.org/10.1088/0965-0393/3/5/008"><img src="assets/topics/plasticity.jpg" alt="Discrete dislocation plasticity paper first page"></a><div><time>1995</time><h3>Discrete dislocations enter predictive mechanics</h3><p>Van der Giessen and Needleman connect individual dislocation motion to continuum-scale boundary-value problems.</p></div></article>
+      <article><a href="https://arxiv.org/abs/math/0103221"><img src="assets/topics/phasefield.jpg" alt="Chambolle variational fracture paper first page"></a><div><time>2002</time><h3>Variational fracture becomes computable</h3><p>Chambolle establishes existence and approximation results for quasi-static brittle-crack growth.</p></div></article>
+      <article><a href="https://arxiv.org/abs/1510.04232"><img src="assets/milestones/data-driven.jpg" alt="Data-driven computational mechanics first page"></a><div><time>2016</time><h3>Material data as the model</h3><p>Kirchdoerfer and Ortiz formulate mechanics without a fitted constitutive function. <a href="#r21">[21]</a></p></div></article>
+    </div>
+    <p class="note"><b>Important historical anchors not duplicated as local page images:</b> Taylor’s dislocation theory (1934), Eshelby’s inclusion solution (1957), and the Turner–Clough–Martin–Topp stiffness paper (1956) remain canonical and are retained in the bibliography or topic map. Their absence from this image trail is a source-access constraint, not a judgment of importance.</p>
+  </section>
+
+  <section id="path">
+    <h2>Reading paths</h2>
+    <div class="paths">
+      <p><b>Core mechanics:</b> <a href="#r1">Gurtin et al.</a> → <a href="#r2">Holzapfel</a> → <a href="#r3">Hill</a></p>
+      <p><b>Computational solids:</b> <a href="#r19">Hughes</a> → <a href="#r20">Simo &amp; Hughes</a> → <a href="#r8">Simo &amp; Taylor</a></p>
+      <p><b>Failure:</b> <a href="#r12">Griffith</a> → <a href="#r13">Irwin</a> → <a href="#r15">Rice</a> → <a href="#r17">Bourdin et al.</a></p>
+      <p><b>Data and credibility:</b> <a href="#r22">Oberkampf &amp; Roy</a> → <a href="#r23">Kennedy &amp; O’Hagan</a> → <a href="#r24">Xiu &amp; Karniadakis</a></p>
+    </div>
+  </section>
+
+  <section id="resources">
+    <h2>Courses, journals, and conference resources</h2>
+    <p>The learning sequence is anchored in Stanford’s mechanics curriculum. Venue labels describe scholarly role rather than a fabricated universal ranking.</p>
+
+    <h3 class="resource-heading">Stanford course spine</h3>
+    <div class="resource-grid">
+      <article><small>Undergraduate foundation</small><h4><a href="https://bulletin.stanford.edu/courses/1048141">ME 80 · Mechanics of Materials</a></h4><p>Torsion, bending, buckling, pressure vessels, multiaxial stress, and failure criteria.</p></article>
+      <article><small>Graduate continuum and constitutive mechanics</small><h4><a href="https://bulletin.stanford.edu/courses/2132531">ME 340 · Mechanics—Elasticity and Inelasticity</a></h4><p>Elasticity, contact, plasticity, crystal plasticity, LEFM, J-integral, cohesive models, and fatigue.</p></article>
+      <article><small>Materials-mechanism foundation</small><h4><a href="https://bulletin.stanford.edu/courses/1046812">MATSCI 208 · Mechanical Properties of Materials</a></h4><p>Microstructure–property relations, dislocations, strengthening, creep, fracture, and fatigue.</p></article>
+      <article><small>Finite-element foundation</small><h4><a href="https://bulletin.stanford.edu/courses/2167642">CME 232 · Introduction to Computational Mechanics</a></h4><p>Variational forms, bars, beams, membranes, plates, elasticity, FEM, and BEM.</p></article>
+      <article><small>Nonlinear computational solids</small><h4><a href="https://cm2.stanford.edu/teaching/cee-310-computational-solid-mechanics-spring-alternating">CEE 310 · Computational Solid Mechanics</a></h4><p>Finite deformation, finite elasticity, viscoelasticity, plasticity, and nonlinear FE implementation.</p></article>
+      <article><small>Waves and inverse methods</small><h4><a href="https://geophysics.stanford.edu/academics-admissions/winter-quarter-courses-2026/gp-238-waves-solids-and-fluids">GEOPHYS 238 · Waves in Solids and Fluids</a></h4><p>Elastic waves, dispersion, interfaces, Green functions, reciprocity, adjoints, and inversion.</p></article>
+      <article><small>Dynamic fracture</small><h4><a href="https://geophysics.stanford.edu/academics-admissions/autumn-quarter-courses-24-25/gp-229-earthquake-rupture-dynamics">GEOPHYS 229 · Earthquake Rupture Dynamics</a></h4><p>LEFM, elastodynamics, cohesive weakening, friction laws, rupture nucleation, and arrest.</p></article>
+      <article><small>Program-level map</small><h4><a href="https://cee.stanford.edu/academics-admission/graduate-degrees/ms-programs/structural-engineering-mechanics/ms-mechanics-0">Stanford Mechanics &amp; Computation curriculum</a></h4><p>Core and breadth courses spanning structural dynamics, solid mechanics, fracture, plasticity, FEM, and scientific computing.</p></article>
+    </div>
+
+    <h3 class="resource-heading">Archival journals researchers treat as leading venues</h3>
+    <p class="venue-note">Solid mechanics is journal-led. “Leading” depends on contribution type: fundamental mechanics, computational methodology, physical metallurgy, fracture, or experiment. The list below therefore states scope rather than pretending to be a single ordinal ranking.</p>
+    <div class="resource-grid compact">
+      <article><small>Flagship · fundamental solid mechanics</small><h4><a href="https://www.sciencedirect.com/journal/journal-of-the-mechanics-and-physics-of-solids">Journal of the Mechanics and Physics of Solids</a></h4><p>Mechanism-based theoretical, computational, and experimental work of lasting significance.</p></article>
+      <article><small>Flagship · broad solids and structures</small><h4><a href="https://www.sciencedirect.com/journal/international-journal-of-solids-and-structures">International Journal of Solids and Structures</a></h4><p>Foundations and applications across material behavior, stability, failure, multiscale and multiphysics solids.</p></article>
+      <article><small>Flagship · broad applied mechanics</small><h4><a href="https://www.asme.org/publications-submissions/journals/find-journal/journal-applied-mechanics?productKey=JAMOL">Journal of Applied Mechanics</a></h4><p>Permanent-interest results across mechanics, including constitutive behavior, fracture, dynamics, waves, and computation.</p></article>
+      <article><small>Flagship · computational mechanics</small><h4><a href="https://www.sciencedirect.com/journal/computer-methods-in-applied-mechanics-and-engineering">Computer Methods in Applied Mechanics and Engineering</a></h4><p>Major advances in computational methods governed by mechanics.</p></article>
+      <article><small>Leading · numerical methodology</small><h4><a href="https://onlinelibrary.wiley.com/journal/10970207">International Journal for Numerical Methods in Engineering</a></h4><p>Analysis, development, and implementation of numerical methods for engineering.</p></article>
+      <article><small>Flagship · structural materials science</small><h4><a href="https://www.actamaterialia.org/journals/acta-materialia/">Acta Materialia</a></h4><p>Mechanistic processing–structure–property connections in inorganic materials.</p></article>
+      <article><small>Leading specialist · inelasticity</small><h4><a href="https://www.sciencedirect.com/journal/international-journal-of-plasticity">International Journal of Plasticity</a></h4><p>Plasticity, damage, micromechanics, and constitutive modeling.</p></article>
+      <article><small>Leading specialist · fracture</small><h4><a href="https://www.sciencedirect.com/journal/engineering-fracture-mechanics">Engineering Fracture Mechanics</a></h4><p>Fracture, fatigue, damage tolerance, and structural integrity.</p></article>
+      <article><small>Leading specialist · fatigue</small><h4><a href="https://www.sciencedirect.com/journal/international-journal-of-fatigue">International Journal of Fatigue</a></h4><p>Mechanisms, characterization, and prediction of fatigue in materials and structures.</p></article>
+      <article><small>Leading specialist · experiment</small><h4><a href="https://sem.org/journal-em">Experimental Mechanics</a></h4><p>New experiments and measurement methods for materials, structures, and systems.</p></article>
+    </div>
+
+    <h3 class="resource-heading">Flagship research meetings</h3>
+    <p class="venue-note">These are meetings researchers recognize as major gathering points. Unlike computer-science conferences, most do not replace journal publication; reputation comes from invited lectures, minisymposia, community concentration, and technical review.</p>
+    <div class="resource-grid compact">
+      <article><small>International flagship · all mechanics · quadrennial</small><h4><a href="https://iutam.org/">ICTAM · International Congress of Theoretical and Applied Mechanics</a></h4><p>IUTAM’s broad congress, with selected general, sectional, and contributed presentations across mechanics.</p></article>
+      <article><small>US flagship · all mechanics · quadrennial</small><h4><a href="https://www.usnctam26.org/">US National Congress on Theoretical and Applied Mechanics</a></h4><p>The broad US congress spanning solid, fluid, computational, experimental, and applied mechanics.</p></article>
+      <article><small>International flagship · computational</small><h4><a href="https://iacm.info/scientific-events/wccm/">WCCM · World Congress on Computational Mechanics</a></h4><p>IACM’s biennial world congress for computational mechanics.</p></article>
+      <article><small>US flagship · computational</small><h4><a href="https://www.usacm.org/site_page.cfm?pk_association_webpage_menu=11216">USNCCM · US National Congress on Computational Mechanics</a></h4><p>USACM’s national congress, complemented by specialist thematic conferences.</p></article>
+      <article><small>Major interdisciplinary annual meeting</small><h4><a href="https://socengsci.org/">SES Annual Technical Meeting</a></h4><p>Highly concentrated symposia at the interfaces of mechanics, materials, mathematics, and engineering science.</p></article>
+      <article><small>Flagship · experimental mechanics</small><h4><a href="https://sem.org/">SEM Annual Conference</a></h4><p>Measurement, material characterization, dynamics, inverse methods, and V&amp;V/UQ.</p></article>
+      <article><small>Major · engineering mechanics</small><h4><a href="https://www.asce.org/communities/institutes-and-technical-groups/engineering-mechanics-institute/">EMI Conference</a></h4><p>Fundamental and applied engineering mechanics organized through ASCE EMI technical committees.</p></article>
+    </div>
+  </section>
+
+  <section id="references">
+    <h2>Selected references</h2>
+    <ol class="references">
+      <li id="r1">M. E. Gurtin, E. Fried, and L. Anand, <i>The Mechanics and Thermodynamics of Continua</i>, Cambridge University Press, 2010.</li>
+      <li id="r2">G. A. Holzapfel, <i>Nonlinear Solid Mechanics</i>, Wiley, 2000.</li>
+      <li id="r3">R. Hill, <i>The Mathematical Theory of Plasticity</i>, Oxford University Press, 1950.</li>
+      <li id="r4">G. I. Taylor, “<a href="https://doi.org/10.1098/rspa.1934.0106">The Mechanism of Plastic Deformation of Crystals. Part I</a>,” <i>Proceedings of the Royal Society A</i>, 145, 362–387, 1934.</li>
+      <li id="r5">J. D. Eshelby, “<a href="https://doi.org/10.1098/rspa.1957.0133">The Determination of the Elastic Field of an Ellipsoidal Inclusion</a>,” <i>Proceedings of the Royal Society A</i>, 241, 376–396, 1957.</li>
+      <li id="r6">E. O. Hall, “The Deformation and Ageing of Mild Steel: III Discussion of Results,” <i>Proceedings of the Physical Society B</i>, 64, 747–753, 1951.</li>
+      <li id="r7">N. J. Petch, “The Cleavage Strength of Polycrystals,” <i>Journal of the Iron and Steel Institute</i>, 174, 25–28, 1953.</li>
+      <li id="r8">J. C. Simo and R. L. Taylor, “<a href="https://doi.org/10.1016/0045-7825(85)90070-2">Consistent Tangent Operators for Rate-Independent Elastoplasticity</a>,” <i>CMAME</i>, 48, 101–118, 1985.</li>
+      <li id="r9">A. L. Gurson, “<a href="https://doi.org/10.1115/1.3443401">Continuum Theory of Ductile Rupture by Void Nucleation and Growth</a>,” <i>Journal of Engineering Materials and Technology</i>, 99, 2–15, 1977.</li>
+      <li id="r10">J. Lemaitre, “A Continuous Damage Mechanics Model for Ductile Fracture,” <i>Journal of Engineering Materials and Technology</i>, 107, 83–89, 1985.</li>
+      <li id="r11">F. H. Norton, <i>The Creep of Steel at High Temperatures</i>, McGraw-Hill, 1929.</li>
+      <li id="r12">A. A. Griffith, “<a href="https://doi.org/10.1098/rsta.1921.0006">The Phenomena of Rupture and Flow in Solids</a>,” <i>Philosophical Transactions of the Royal Society A</i>, 221, 163–198, 1921.</li>
+      <li id="r13">G. R. Irwin, “Analysis of Stresses and Strains Near the End of a Crack Traversing a Plate,” <i>Journal of Applied Mechanics</i>, 24, 361–364, 1957.</li>
+      <li id="r14">P. C. Paris and F. Erdogan, “<a href="https://doi.org/10.1115/1.3656900">A Critical Analysis of Crack Propagation Laws</a>,” <i>Journal of Basic Engineering</i>, 85, 528–533, 1963.</li>
+      <li id="r15">J. R. Rice, “<a href="https://doi.org/10.1115/1.3601206">A Path Independent Integral and the Approximate Analysis of Strain Concentration by Notches and Cracks</a>,” <i>Journal of Applied Mechanics</i>, 35, 379–386, 1968.</li>
+      <li id="r16">N. Moës, J. Dolbow, and T. Belytschko, “<a href="https://doi.org/10.1002/(SICI)1097-0207(19990910)46:1%3C131::AID-NME726%3E3.0.CO;2-J">A Finite Element Method for Crack Growth without Remeshing</a>,” <i>IJNME</i>, 46, 131–150, 1999.</li>
+      <li id="r17">B. Bourdin, G. A. Francfort, and J.-J. Marigo, “<a href="https://doi.org/10.1016/S0022-5096(99)00028-9">Numerical Experiments in Revisited Brittle Fracture</a>,” <i>JMPS</i>, 48, 797–826, 2000.</li>
+      <li id="r18">O. C. Zienkiewicz, R. L. Taylor, and J. Z. Zhu, <i>The Finite Element Method: Its Basis and Fundamentals</i>, 7th ed., Elsevier, 2013.</li>
+      <li id="r19">T. J. R. Hughes, <i>The Finite Element Method: Linear Static and Dynamic Finite Element Analysis</i>, Dover, 2000.</li>
+      <li id="r20">J. C. Simo and T. J. R. Hughes, <i>Computational Inelasticity</i>, Springer, 1998.</li>
+      <li id="r21">T. Kirchdoerfer and M. Ortiz, “<a href="https://doi.org/10.1016/j.cma.2016.02.001">Data-driven Computational Mechanics</a>,” <i>CMAME</i>, 304, 81–101, 2016.</li>
+      <li id="r22">W. L. Oberkampf and C. J. Roy, <i>Verification and Validation in Scientific Computing</i>, Cambridge University Press, 2010.</li>
+      <li id="r23">M. C. Kennedy and A. O’Hagan, “<a href="https://doi.org/10.1111/1467-9868.00294">Bayesian Calibration of Computer Models</a>,” <i>Journal of the Royal Statistical Society B</i>, 63, 425–464, 2001.</li>
+      <li id="r24">D. Xiu and G. E. Karniadakis, “<a href="https://doi.org/10.1137/S1064827501387826">The Wiener–Askey Polynomial Chaos for Stochastic Differential Equations</a>,” <i>SIAM Journal on Scientific Computing</i>, 24, 619–644, 2002.</li>
+      <li id="r25">M. Raissi, P. Perdikaris, and G. E. Karniadakis, “<a href="https://doi.org/10.1016/j.jcp.2018.10.045">Physics-informed Neural Networks</a>,” <i>Journal of Computational Physics</i>, 378, 686–707, 2019.</li>
+      <li id="r26">National Research Council, <a href="https://nap.nationalacademies.org/catalog/12199/integrated-computational-materials-engineering-a-transformational-discipline-for-improved-competitiveness"><i>Integrated Computational Materials Engineering</i></a>, National Academies Press, 2008.</li>
+      <li id="r27">T. DebRoy et al., “<a href="https://doi.org/10.1016/j.pmatsci.2017.10.001">Additive Manufacturing of Metallic Components: Process, Structure and Properties</a>,” <i>Progress in Materials Science</i>, 92, 112–224, 2018.</li>
+      <li id="r28">C. Yi et al., “<a href="https://arxiv.org/abs/2311.07046">A Holistic Review on Fatigue Properties of Additively Manufactured Metals</a>,” arXiv:2311.07046, 2023.</li>
+      <li id="r29">M. F. Ashby, <i>Materials Selection in Mechanical Design</i>, 5th ed., Butterworth-Heinemann, 2016.</li>
+      <li id="r30">G. Allaire, <i>Shape Optimization by the Homogenization Method</i>, Springer, 2002.</li>
+      <li id="r31">S. R. Kalidindi, “Data Science and Cyberinfrastructure: Critical Enablers for Accelerated Development of Hierarchical Materials,” <i>International Materials Reviews</i>, 60, 150–168, 2015.</li>
+      <li id="r32">S. Timoshenko and S. Woinowsky-Krieger, <i>Theory of Plates and Shells</i>, 2nd ed., McGraw-Hill, 1959.</li>
+      <li id="r33">S. P. Timoshenko and J. M. Gere, <i>Theory of Elastic Stability</i>, 2nd ed., McGraw-Hill, 1961.</li>
+      <li id="r34">J. D. Achenbach, <i>Wave Propagation in Elastic Solids</i>, North-Holland, 1973.</li>
+      <li id="r35">R. D. Mindlin, “<a href="https://doi.org/10.1115/1.4010217">Influence of Rotatory Inertia and Shear on Flexural Motions of Isotropic, Elastic Plates</a>,” <i>Journal of Applied Mechanics</i>, 18, 31–38, 1951.</li>
+      <li id="r36">M. A. Biot, “<a href="https://doi.org/10.1063/1.1712886">General Theory of Three-Dimensional Consolidation</a>,” <i>Journal of Applied Physics</i>, 12, 155–164, 1941.</li>
+    </ol>
+  </section>
+
+  <footer>Scope: solid mechanics and mechanical behavior of materials. The map favors primary sources for historical claims and standard monographs for foundations.</footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
