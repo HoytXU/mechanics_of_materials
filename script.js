@@ -1,12 +1,12 @@
 (function () {
   'use strict';
 
-  const paper = (image, url, title) => ({ image, url, title });
+  const paper = (image, url, title, reference) => ({ image, url, title, reference });
   const topicPapers = {
-    kinematics: paper('assets/topics/kinematics.jpg', 'https://arxiv.org/abs/1802.02768', 'Khajehsaeid, Arghavani, and Naghdabadi, Hyperelastic Constitutive Modeling with Exponential Decay (2018)'),
+    kinematics: paper('assets/topics/kinematics.jpg', 'https://doi.org/10.1007/s00205-016-1007-x', 'Neff, Eidel, and Martin, Geometry of Logarithmic Strain Measures in Solid Mechanics (2016)', 'r37'),
     balance: paper('assets/topics/balance.jpg', 'https://arxiv.org/abs/2211.12811', 'Bigoni et al., Configurational Forces on Elastic Structures (2022)'),
     stress: paper('assets/topics/stress.jpg', 'https://doi.org/10.1098/rspa.2015.0415', 'dell’Isola, Seppecher, and Della Corte, The Postulations à la d’Alembert and à la Cauchy for Higher-Gradient Continua (2015)'),
-    thermo: paper('assets/topics/thermo.jpg', 'https://arxiv.org/abs/q-bio/0312001', 'Ambrosi and Mollica, On the Mechanics of a Growing Tumor (2004)'),
+    thermo: paper('assets/topics/thermo.jpg', 'https://doi.org/10.1007/s10659-010-9298-x', 'Casey, Nonlinear Thermoelastic Materials with Viscosity and Internal Constraints: A Classical Continuum Thermodynamics Approach (2011)'),
     rve: paper('assets/topics/rve.jpg', 'https://arxiv.org/abs/2103.07627', 'Schneider, Josien, and Otto, Representative Volume Elements for Matrix–Inclusion Composites (2021)'),
 
     beams: paper('assets/topics/beams.jpg', 'https://doi.org/10.1007/s00161-014-0381-6', 'Awrejcewicz et al., Regular and Chaotic Oscillations of a Timoshenko Beam (2015)'),
@@ -40,10 +40,10 @@
     composites: paper('assets/topics/composites.jpg', 'https://dml.cz/handle/10338.dmlcz/134357', 'Walpole, A Comparison of Homogenization, Hashin–Shtrikman Bounds, and Halpin–Tsai Equations (1997)'),
     metamaterials: paper('assets/topics/metamaterials.jpg', 'https://doi.org/10.1557/mrc.2015.51', 'Christensen et al., Vibrant Times for Mechanical Metamaterials (2015)'),
 
-    fem: paper('assets/topics/fem.jpg', 'https://ntrs.nasa.gov/citations/19660023435', 'Martin, Large Deflection and Stability Analysis by the Direct Stiffness Method (1966)'),
+    fem: paper('assets/topics/fem.jpg', 'https://doi.org/10.1090/S0002-9904-1943-07818-4', 'Courant, Variational Methods for the Solution of Problems of Equilibrium and Vibrations (1943)'),
     nonlinear: paper('assets/topics/nonlinear.jpg', 'https://hdl.handle.net/10919/20113', 'Fujii et al., A Comparison of Algorithms for Tracing Nonlinear Equilibrium Paths (2002)'),
     locking: paper('assets/topics/locking.jpg', 'https://arxiv.org/abs/2111.00612', 'Karabelas et al., A Robust Finite-Element Framework for Nearly Incompressible Elasticity (2021)'),
-    fe2: paper('assets/topics/fe2.jpg', 'https://graphics.cs.cmu.edu/projects/stvk/', 'Barbič and James, Real-Time Subspace Integration for Deformable Models (2005)'),
+    fe2: paper('assets/topics/fe2.jpg', 'https://journals.riverpublishers.com/index.php/EJCM/article/view/2777', 'Feyel and Chaboche, Multi-Scale Nonlinear FE² Analysis of Composite Structures (2001)'),
     datadriven: paper('assets/milestones/data-driven.jpg', 'https://arxiv.org/abs/1510.04232', 'Kirchdoerfer and Ortiz, Data-Driven Computational Mechanics (2016)'),
 
     dic: paper('assets/topics/dic.jpg', 'https://arxiv.org/abs/0712.2642', 'Roux et al., Three-Dimensional Image Correlation from X-Ray Computed Tomography (2008)'),
@@ -86,6 +86,13 @@
     source.href = item.url;
     source.textContent = 'Paper';
     caption.appendChild(source);
+    if (item.reference) {
+      caption.appendChild(document.createTextNode(' · '));
+      const reference = document.createElement('a');
+      reference.href = '#' + item.reference;
+      reference.textContent = 'Bibliography [' + item.reference.slice(1) + ']';
+      caption.appendChild(reference);
+    }
   }
 
   Object.entries(selections).forEach(([sectionId, keys]) => {
